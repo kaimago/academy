@@ -4,7 +4,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 
 /**
- * Test..
+ * Test...
  */
 public class CardTest {
 
