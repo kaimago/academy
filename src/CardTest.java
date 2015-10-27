@@ -3,6 +3,9 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 
+/**
+ * Test.
+ */
 public class CardTest {
 
     @Test
