@@ -8,8 +8,6 @@ import java.util.ArrayList;
  * 123
  * 123
  * avc
- * mybranch Change
- * 234
  */
 public class CardTest {
 

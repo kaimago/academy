@@ -2,11 +2,6 @@ import java.util.*;
 
 public class Main {
 
-//    enum pokerCards  {ASS, TWO, THREE, FOUR, FIVE, SIX, SEVEN,
-//        EIGHT, NINE, TEN, KING, QUEEN, JACK}
-//
-//    enum suit {SPADES, HEARTS, DIAMONDS, CLUBS}
-
     public static void main(String[] args) {
         System.out.println("Hello World!");
 
@@ -17,22 +12,8 @@ public class Main {
             }
         }
 
-        for (Card card :cards){
-
-        System.out.println(card);
-        }
-
-
         long seed = System.nanoTime();
         Collections.shuffle(cards, new Random(seed));
-
-
-
-        for (Card card :cards){
-
-            System.out.println("After:" +card);
-        }
-
 
         final ArrayList<Card> currentList = new ArrayList<Card>();
         currentList.add(cards.get(0));
@@ -57,9 +38,6 @@ public class Main {
             System.out.println("You have a four of a kind");
         }
 
-
-
-
     }
 
     public static boolean checkForSameValue(List<Card> list, int aCounter){
@@ -83,37 +61,6 @@ public class Main {
         }
         return false;
     }
-
-    public static boolean checkForFullHouse(List<Card> list) {
-
-        for (Card card :list) {
-
-            final Card.values currentValue = card.getV();
-
-            int counter = 0;
-
-            for (Card card2 :list) {
-
-                if (card2.getV().equals(currentValue)) {
-                    counter++;
-                }
-
-            }
-
-            if (counter == 3){
-//                for(Card card:list){
-//                    if(card.getV()==currentValue)
-//                }
-            }
-
-        }
-
-        return false;
-    }
-
-
-
-
 
 
 
