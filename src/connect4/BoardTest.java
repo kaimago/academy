@@ -16,40 +16,92 @@ public class BoardTest {
     }
 
     @Test
-    public void ShouldAddTokenToGridColumn() throws Exception {
+    public void ShouldGetSameColor() throws Exception {
 
-        Token newToken = new Token(Token.Color.BLUE);
+        Token token = new Token(Token.Color.RED, 0);
+        board.addToken(token);
 
-        Token emptyToken = board.getGridToken(5,6);
+        boolean hasTokenSameColor = board.hasTokenThisColor(Token.Color.RED, 0, 0);
+
+        Assert.assertTrue(hasTokenSameColor);
+    }
+
+
+    @Test
+    public void NewGridShouldBeEmpty() throws Exception {
+
+        Token emptyToken = board.getGridToken(4,5);
 
         Assert.assertEquals(null, emptyToken);
+    }
 
-        boolean tokenAdded = board.addToken(newToken, 0);
+    @Test
+    public void addTokenToNoneExistingGridPlusValue() throws Exception {
 
-        org.junit.Assert.assertTrue(tokenAdded);
+        Token newToken = new Token(Token.Color.BLUE, 10);
 
-        Token addedToken = board.getGrid()[0][0];
+        Token tokenAdded;
+        try {
+            tokenAdded = board.addToken(newToken);
+        } catch (ArrayIndexOutOfBoundsException e) {
 
-        org.junit.Assert.assertTrue(addedToken.equals(newToken));
-        org.junit.Assert.assertFalse(addedToken.equals(new Token(Token.Color.BLUE)));
+            Assert.assertTrue(true);
+            return;
+        }
+
+        Assert.assertNotNull(tokenAdded);
 
     }
 
     @Test
-    public void addTokenToFullColumn() {
+    public void addTokenToNoneExistingGridNegativeValue() throws Exception {
 
-        Token newToken = new Token(Token.Color.BLUE);
+        Token newToken = new Token(Token.Color.BLUE, -1);
+
+        Token tokenAdded;
+        try {
+            tokenAdded = board.addToken(newToken);
+        } catch (ArrayIndexOutOfBoundsException e) {
+
+            Assert.assertTrue(true);
+            return;
+        }
+
+        Assert.assertNotNull(tokenAdded);
+
+    }
+
+    @Test
+    public void ShouldAddTokenToGridColumn() throws Exception {
+
+        Token newToken = new Token(Token.Color.BLUE, 0);
+
+        Token tokenAdded = board.addToken(newToken);
+
+        Assert.assertNotNull(tokenAdded);
+
+        Token addedToken = board.getGridToken(0,0);
+
+        org.junit.Assert.assertTrue(addedToken.equals(newToken));
+        org.junit.Assert.assertFalse(addedToken.equals(new Token(Token.Color.BLUE, 0)));
+
+    }
+
+    @Test
+    public void ShouldAddMoreTokenToOneColumnThanPossible() {
+
+        Token newToken = new Token(Token.Color.BLUE, 0);
 
         try {
 
-            board.addToken(newToken, 0);
-            board.addToken(newToken, 0);
-            board.addToken(newToken, 0);
-            board.addToken(newToken, 0);
-            board.addToken(newToken, 0);
-            board.addToken(newToken, 0);
-            board.addToken(newToken, 0);
-            board.addToken(newToken, 0);
+            board.addToken(newToken);
+            board.addToken(newToken);
+            board.addToken(newToken);
+            board.addToken(newToken);
+            board.addToken(newToken);
+            board.addToken(newToken);
+            board.addToken(newToken);
+            board.addToken(newToken);
 
         } catch (Exception e) {
             Assert.assertTrue(true);
@@ -58,31 +110,17 @@ public class BoardTest {
 
         Assert.assertFalse(true);
 
-
     }
 
 
-    @Test
     public void printGrid() throws Exception {
 
-        Token tokenBlue = new Token(Token.Color.BLUE);
-        Token tokenRed = new Token(Token.Color.RED);
-
-        board.addToken(tokenBlue, 0);
-        board.addToken(tokenRed, 1);
-        board.addToken(tokenBlue, 2);
-        board.addToken(tokenRed, 1);
+        board.addToken(new Token(Token.Color.BLUE, 1));
+        board.addToken(new Token(Token.Color.RED, 2));
+        board.addToken(new Token(Token.Color.RED, 1));
+        board.addToken(new Token(Token.Color.RED, 2));
 
         board.printGrid();
-
-
-
     }
 
-//    @Test
-//    public void hasLinie(){
-//
-//
-//
-//    }
 }
