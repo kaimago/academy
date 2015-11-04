@@ -1,12 +1,13 @@
 package connect4;
 
 
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
+
+import static org.junit.Assert.assertNotNull;
+import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class Connect4Mock {
@@ -17,10 +18,10 @@ public class Connect4Mock {
     @Test
     public void ShouldReturnATokenMock() {
 
-        Mockito.when(connect4.initGame()).thenReturn(new Token(Token.Color.BLUE, 1));
+        when(connect4.initGame()).thenReturn(new Token(Token.Color.BLUE, 1));
 
         Token token = connect4.initGame();
-        Assert.assertNotNull(token);
+        assertNotNull(token);
 
     }
 
@@ -29,12 +30,13 @@ public class Connect4Mock {
 //    public void ShouldADraw() throws Exception {
 //
 //        //Not working because Mockito can not mock final Class
+//          Alternativ Spring für Scanner benutzen
 //
-//        Referee refereeMock = Mockito.mock(Referee.class);
-//        Scanner scannerMock = Mockito.mock(Scanner.class);
+//        Referee refereeMock = mock(Referee.class);
+//        Scanner scannerMock = mock(Scanner.class);
 //
-//        Mockito.when(connect4.getReferee()).thenReturn(refereeMock);
-//        Mockito.when(connect4.getScanner()).thenReturn(scannerMock);
+//        when(connect4.getReferee()).thenReturn(refereeMock);
+//        when(connect4.getScanner()).thenReturn(scannerMock);
 //
 //
 //        Mockito.stub(scannerMock.nextLine()).toReturn("1");
@@ -45,4 +47,8 @@ public class Connect4Mock {
 //        Assert.assertNotNull(token);
 //
 //    }
+
+
+
+
 }
