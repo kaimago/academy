@@ -57,6 +57,9 @@ public class Connect4Test {
 
         boolean validateInput = connect4Mock.validateInput("lanxi,34545");
 
+        Mockito.verify(connect4Mock).getPlayerBlue();
+        Mockito.verify(connect4Mock).validateInput(Mockito.anyString());
+
         Assert.assertTrue(validateInput);
 
     }
